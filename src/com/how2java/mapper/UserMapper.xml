@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.how2java.mapper.UserMapper" >
+
+    <resultMap id="BaseResultMap" type="com.how2java.pojo.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="gander" property="gander" jdbcType="VARCHAR" />
+        <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="notes" property="notes" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, name, password, gander, telephone, address, notes
+    </sql>
+
+<!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->	
+    <select id="findUserByNameAndPwd"  parameterType="map"  resultType="User">
+    		select name, password from user where name=#{name} and password=#{password}	
+    </select>
+	<!-- 查询用户和密码进行登录 -->
+	<select id="findByUsername" resultType="User" parameterType="String">
+		select * from user where name = #{name}
+	</select>
+	
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="addUser" parameterType="com.how2java.pojo.User" >
+        insert into user ( name, password, 
+            gander, telephone, address, 
+            notes)
+        values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+            #{gander,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+            #{notes,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.how2java.pojo.User" >
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="gander != null" >
+                gander,
+            </if>
+            <if test="telephone != null" >
+                telephone,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="notes != null" >
+                notes,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="gander != null" >
+                #{gander,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null" >
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="notes != null" >
+                #{notes,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.how2java.pojo.User" >
+        update user
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="gander != null" >
+                gander = #{gander,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null" >
+                telephone = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="notes != null" >
+                notes = #{notes,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.how2java.pojo.User" >
+        update user
+        set name = #{name,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR},
+            gander = #{gander,jdbcType=VARCHAR},
+            telephone = #{telephone,jdbcType=VARCHAR},
+            address = #{address,jdbcType=VARCHAR},
+            notes = #{notes,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
