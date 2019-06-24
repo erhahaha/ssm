@@ -1,91 +1,116 @@
-body {
-    background-image: url("../images/loginBac.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
+#app,
+body,
+html {
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
 }
 
-#login_frame {
-    width: 400px;
-    height: 260px;
-    padding: 13px;
+.layui-icon{ font-size:16px !important;}
+.mag0{ margin:0 !important; }
+::selection { background: #ff5722; color: #fff; }
+.layui-red{ color:#f00 !important; font-weight:bold;}
+.layui-blue{ color:#01AAED !important;}
+#app .layui-form-item.layui-input-focus input{ border-color:#ff6700 !important;}
+.layui-block {
+    width: 100% !important;
+}
+#app {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/login-bg.jpg');
+    position: relative;
+}
 
+#app form.layui-form {
+    padding: 0 20px 20px 20px;
+    width: 300px;
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -200px;
-    margin-top: -200px;
-
-    background-color: rgba(240, 255, 255, 0.5);
-
-    border-radius: 10px;
-    text-align: center;
+    margin: -150px 0 0 -150px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 50px #009688;
 }
 
-form p > * {
-    display: inline-block;
-    vertical-align: middle;
+#app .login_face {
+    margin: -55px auto 20px;
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    overflow: hidden;
+    box-shadow: 0 0 30px #009688;
+    background: #FFF;
 }
 
-#image_logo {
-    margin-top: 22px;
+#app .login_face img {
+    width: 100%;
 }
 
-.label_input {
-    font-size: 14px;
-    font-family: ËÎÌו;
-
-    width: 65px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-
-    color: white;
-    background-color: #3CD8FF;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.text_field {
-    width: 278px;
-    height: 28px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 0;
-}
-
-#btn_login {
-    font-size: 14px;
-    font-family: ËÎÌו;
-
-    width: 120px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-
-    color: white;
-    background-color: #3BD9FF;
-    border-radius: 6px;
-    border: 0;
-
-    float: left;
-}
-
-#forget_pwd {
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
+#app .layui-form-item {
     position: relative;
-    float: right;
-    top: 5px;
-
 }
 
-#forget_pwd:hover {
-    color: blue;
-    text-decoration: underline;
+#app .layui-form-item label {
+    position: absolute;
+    color: #757575;
+    left: 10px;
+    top: 9px;
+    line-height: 20px;
+    background: transparent;
+    padding: 0 5px;
+    font-size: 14px;
+    cursor: text;
+}
+#code{
+    padding-right: 110px;
+}
+#imgCode .img {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    cursor: pointer;
+    width: 100px;
+    background: #C4E1CE;
+}
+#app .layui-form-item input{
+    background: #FFF!important;
+}
+#app .layui-form-item input,
+#app .layui-form-item label{
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+#app .layui-form-item input::placeholder{
+    color: transparent!important;
+}
+#app .layui-form-item.layui-input-focus input::placeholder{
+    color: #757575!important;
+}
+#app .layui-form-item.layui-input-focus label,
+#app .layui-form-item.layui-input-active label{
+    top: -10px;
+    font-size: 12px;
+    color: #ff6700;
+    background: #fff!important;
 }
 
-#login_control {
-    padding: 0 28px;
+#codeImg canvas{
+    cursor:pointer;
 }
+
+
+
 
